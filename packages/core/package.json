@@ -1,0 +1,35 @@
+{
+  "name": "micro-frontsystem",
+  "version": "1.0.0",
+  "description": "Create micro-frontends with easy configurations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "micro-frontend",
+    "node",
+    "cli",
+    "configuration"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "shelljs": "^0.8.5",
+    "fs-extra": "^10.1.0",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.11"
+  }
+}

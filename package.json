@@ -2,34 +2,22 @@
   "name": "micro-frontsystem",
   "version": "1.0.0",
   "description": "Create micro-frontends with easy configurations",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
-  },
-  "scripts": {
-    "build": "tsup"
-  },
   "keywords": [
     "micro-frontend",
     "node",
     "cli",
     "configuration"
   ],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "scripts": {
+    "build": "turbo build"
+  },
   "devDependencies": {
-    "@types/shelljs": "^0.8.11",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
-    "colors": "^1.4.0",
     "concurrently": "^7.5.0",
-    "fs-extra": "^10.1.0",
-    "shelljs": "^0.8.5",
     "tsup": "^6.5.0",
+    "turbo": "^1.6.3",
     "typescript": "^4.9.3"
   }
 }

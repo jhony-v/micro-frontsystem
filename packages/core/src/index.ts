@@ -17,7 +17,7 @@ const normalizeApps = <T extends object>(apps: T) => {
 };
 
 const executePreBuildScript = ({ name, preBuildScript }: AppConfig) => {
-  shellJs.exec(`cd apps/${name} && npm run ${preBuildScript}`);
+  shellJs.exec(`cd apps/${name} && pnpm run ${preBuildScript}`);
 };
 
 const liftMultipleApplications = <T extends AppConfig[]>(appsLists: T) => {
