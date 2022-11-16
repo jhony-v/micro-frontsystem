@@ -1,11 +1,3 @@
-# micro-frontsystem
-
-Create micro-frontends with easy configurations across your monorepo that you've already set up.
-
-Configuration created in your root project.
-
-```js
-//micro.front.js
 const micro = require("micro-frontsystem");
 
 const { run } = micro({
@@ -25,8 +17,3 @@ const { run } = micro({
 });
 
 run();
-```
-
-```console
-node ./micro.front.js
-```

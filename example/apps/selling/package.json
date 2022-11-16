@@ -1,0 +1,12 @@
+{
+  "name": "selling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'building selling'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
