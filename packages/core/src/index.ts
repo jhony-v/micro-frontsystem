@@ -5,7 +5,7 @@ import {
 } from "./types";
 import buildTemplate from "./buildTemplate";
 import createServerFile from "./createServerFile";
-import shellJs from "shelljs";
+import { exec } from "shelljs";
 
 const normalizeApps = <T extends object>(apps: T) => {
   return Object.keys(apps).map((currentApp) => {
@@ -17,7 +17,7 @@ const normalizeApps = <T extends object>(apps: T) => {
 };
 
 const executePreBuildScript = ({ name, preBuildScript }: AppConfig) => {
-  shellJs.exec(`cd apps/${name} && pnpm run ${preBuildScript}`);
+  exec(`cd apps/${name} && pnpm run ${preBuildScript}`);
 };
 
 const liftMultipleApplications = <T extends AppConfig[]>(appsLists: T) => {
@@ -25,10 +25,10 @@ const liftMultipleApplications = <T extends AppConfig[]>(appsLists: T) => {
     return `"node ./apps/${app.name}/dist/index.js"`;
   });
   const scripts = createScripts.join(" ").trim();
-  shellJs.exec(`npx concurrently ${scripts} -r`);
+  exec(`npx concurrently ${scripts} -r`);
 };
 
-const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationResponse => {
+export const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationResponse => {
   const { apps: inputApps, autoLift } = props;
   const apps = normalizeApps(inputApps);
   
@@ -53,5 +53,3 @@ const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationResponse => {
     },
   };
 };
-
-export default micro;

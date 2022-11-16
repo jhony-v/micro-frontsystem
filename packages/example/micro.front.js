@@ -1,4 +1,4 @@
-const micro = require("micro-frontsystem");
+const { micro } = require("micro-frontsystem");
 
 const { run } = micro({
   apps: {
@@ -13,7 +13,7 @@ const { run } = micro({
       preBuildScript: "build",
     },
   },
-  autoLift: true,
+  autoLift: true
 });
 
 run();

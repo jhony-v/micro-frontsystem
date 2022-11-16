@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Create micro-frontends with easy configurations",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -14,7 +14,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "keywords": [
     "micro-frontend",
@@ -25,9 +26,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "shelljs": "^0.8.5",
+    "colors": "^1.4.0",
+    "express": "^4.18.2",
     "fs-extra": "^10.1.0",
-    "colors": "^1.4.0"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "@types/shelljs": "^0.8.11"

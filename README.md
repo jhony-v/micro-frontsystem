@@ -6,7 +6,7 @@ Configuration created in your root project.
 
 ```js
 //micro.front.js
-const micro = require("micro-frontsystem");
+const { micro } = require("micro-frontsystem");
 
 const { run } = micro({
   apps: {

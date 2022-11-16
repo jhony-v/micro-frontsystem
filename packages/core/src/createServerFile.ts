@@ -8,7 +8,7 @@ type ConfigServerProps = {
 
 export default function buildServer(configServer: ConfigServerProps) {
   fsExtra.outputFile(
-    path.join(__dirname, `../apps/${configServer.name}/dist/index.js`),
+    path.join(process.cwd(), `./apps/${configServer.name}/dist/index.js`),
     configServer.content
   );
 }
