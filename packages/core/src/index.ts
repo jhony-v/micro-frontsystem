@@ -1,6 +1,7 @@
 import { MicroConfiguration, MicroConfigurationResponse } from "./types";
 import { normalizeApps, executePreBuildScript } from "./utils";
-import server from "./server";
+import MicroServer from "./microServer";
+import BuildScript from "./buildScript";
 
 export const micro = <T>(
   props: MicroConfiguration<T>
@@ -8,15 +9,18 @@ export const micro = <T>(
   const { apps: inputApps, port } = props;
   const apps = normalizeApps(inputApps);
 
+  const server = new MicroServer({
+    apps,
+    port,
+    dirname: process.cwd(),
+  });
+  const buildScript = new BuildScript(apps)
+
   return {
     async run() {
       try {
-        await Promise.all([...apps].map(app => executePreBuildScript(app)))
-        server({
-          apps,
-          dirname: process.cwd(),
-          port,
-        });
+        await buildScript.pre();
+        server.start();
       } catch (error) {
         console.log(error.message);
       }

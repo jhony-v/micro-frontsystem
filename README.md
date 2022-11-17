@@ -37,7 +37,7 @@ const { run } = micro({
 run();
 ```
 
-Let's glance at the frontend structure and how it is ready to build our codebase. You can create use the example in the **example package** located inside this repo.
+Let's glance at the frontend structure and how it is ready to build our codebase. You can use the example in the **example package** located inside this repo.
 
 ```
 ├───apps
@@ -60,11 +60,24 @@ Let's glance at the frontend structure and how it is ready to build our codebase
 node ./micro.front.js
 ```
 
-You may be wondering how it works, the *micro.front.js* is a server with base dynamic routes. The microfront architecture in this approach was developed using paths. Thus, you'll be able to use whatever framework. In our example we are using React and Vue independently.First app is clearly where the user will navigate a lot, the seond React's folder is in charge of the marketing team, and the third of the selling team.
+You may be wondering how it works, the *micro.front.js* is a server with base dynamic routes. The microfront architecture in this approach was developed using paths. Thus, you'll be able to use whatever framework. In our example we are using React and Vue independently.First app is clearly where the user will navigate a lot, the second React's folder is in charge of the marketing team, and the third of the selling team.
 
-It's worth mentioning, this server run pretty nice with static pages because its mechanism is serving html or a file.
-
-
-### API
+It's worth mentioning, this server runs pretty nice with static pages because its mechanism is serving html or a file.
 
 
+## API
+
+### apps
+Object of applications with their self configs. The key's property references to the folder inside apps.
+
+| name | usage |
+-- | --
+**basePath** | Specify the entry point path for the applications 
+**preBuildScript** | Name of the script that you want to execute before running the server
+**output** | Folder where the server will search the static resources. By default it is "dist"
+
+### port
+You can specify the port to roll out the applications.
+
+### run
+Start the server executing all processes of the property "app" creating proper routes.
