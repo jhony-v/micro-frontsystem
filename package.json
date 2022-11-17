@@ -11,7 +11,8 @@
   "license": "MIT",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "start": "turbo start"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.43.0",

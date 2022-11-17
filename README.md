@@ -12,15 +12,14 @@ const { run } = micro({
   apps: {
     marketing: {
       basePath: "/marketing",
-      port: 8000,
       preBuildScript: "build",
     },
     selling: {
       basePath: "/selling",
-      port: 8001,
       preBuildScript: "build",
     },
   },
+  port: 8000,
   autoLift: true,
 });
 

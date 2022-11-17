@@ -17,39 +17,30 @@ const normalizeApps = <T extends object>(apps: T) => {
 };
 
 const executePreBuildScript = ({ name, preBuildScript }: AppConfig) => {
-  exec(`cd apps/${name} && pnpm run ${preBuildScript}`);
+  exec(`cd apps/${name} && npm run ${preBuildScript}`);
 };
 
-const liftMultipleApplications = <T extends AppConfig[]>(appsLists: T) => {
-  const createScripts = [...appsLists].map((app) => {
-    return `"node ./apps/${app.name}/dist/index.js"`;
-  });
-  const scripts = createScripts.join(" ").trim();
-  exec(`npx concurrently ${scripts} -r`);
+const liftMultipleApplications = () => {
+  exec(`node ./server/index.js`);
 };
 
 export const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationResponse => {
-  const { apps: inputApps, autoLift } = props;
+  const { apps: inputApps, autoLift, port } = props;
   const apps = normalizeApps(inputApps);
   
   return {
     run() {
+      const templateContent = buildTemplate({
+        apps,
+        port,
+      });
+      createServerFile({
+        content: templateContent,
+      });
       for (const app of apps) {
-        const templateContent = buildTemplate({
-          basePath: app.basePath,
-          name: app.name!,
-          port: app.port,
-        });
-
         app.preBuildScript && executePreBuildScript(app);
-
-        createServerFile({
-          name: app.name!,
-          content: templateContent,
-        });
       }
-
-      autoLift && liftMultipleApplications(apps);
+      autoLift && liftMultipleApplications();
     },
   };
 };

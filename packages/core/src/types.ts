@@ -1,7 +1,6 @@
 
 export type AppConfig = {
    basePath: string
-   port: number
    preBuildScript?: string 
    name?: string
 }
@@ -9,6 +8,7 @@ export type AppConfig = {
 export interface MicroConfiguration<T> {
   apps: { [ key in keyof T ]: AppConfig };
   autoLift?: boolean;
+  port: number
 }
 
 
