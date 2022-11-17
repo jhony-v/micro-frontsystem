@@ -1,10 +1,10 @@
 # micro-frontsystem
 
-Create micro-frontends with easy configurations across your monorepo that you've already set up.
+Create micro-frontends with easy configurations across your monorepo that you've already set up, otherwise, you can created easy.
 
-Configuration created in your root project.
+Config created in your root project.
 
-This is the straightforward configuration create in the root of your project linking multiple applications once.
+This is the straightforward configuration created in the root of your project linking multiple applications once.
 
 ```js
 //micro.front.js
@@ -15,7 +15,7 @@ const { run } = micro({
     marketing: {
       basePath: "/marketing",
       preBuildScript: "build",
-      output: "build" // default is dist, if this change, you must change it here as well
+      output: "build" // default is dist, if this changes, you must update it here as well
     },
     selling: {
       basePath: "/selling",
@@ -28,7 +28,7 @@ const { run } = micro({
 run();
 ```
 
-Let's see the frontend structure and how it is ready to build our codebase.
+Let's glance at the frontend structure and how it is ready to build our codebase. You can create use the example in the **example package** located inside this repo.
 
 ```
 ├───apps
@@ -46,3 +46,12 @@ Let's see the frontend structure and how it is ready to build our codebase.
 ```console
 node ./micro.front.js
 ```
+
+You may be wondering how it works, the *micro.front.js* is a server with base dynamic routes. The microfront architecture in this approach was developed using paths. Thus, you'll be able to use whatever framework. In our example we are using React and Vue independently. The first React's folder is in charge of the marketing team, and the second of the selling team.
+
+It's worth mentioning, this server run pretty nice with static pages because its mechanism is serving html or a file.
+
+
+### API
+
+
