@@ -1,4 +1,4 @@
-import { AppConfig } from "./types";
+import { AppConfig, TemplateCreateRoute } from "./types";
 
 type BuildTemplateProps = {
   port: number;
@@ -14,7 +14,9 @@ export default function buildTemplate(templateProps: BuildTemplateProps) {
     const path = require("path");
 
     ${createMicrofrontFunction()}
-    ${templateProps.apps.map((props) => createRoute({ name: props.name! })).join("\n")}
+    ${templateProps.apps
+      .map((props) => createRoute({ name: props.name!, output: props.output }))
+      .join("\n")}
     
     app.listen(${templateProps.port},() => {
         console.log("RUNNING: " + colors.green("${templateProps.port}"))
@@ -26,7 +28,7 @@ function createMicrofrontFunction() {
   return `
     function createMicrofront(props) {
       const { url, project } = props;
-      const basePath = \`../apps/\${project}/dist\`
+      const basePath = \`../apps/\${project}/\${props.output || "dist"}\`
       const router = Router();
       router.use("/", express.static(path.join(__dirname,basePath)));
       router.get(url, function (req, res) {
@@ -37,11 +39,12 @@ function createMicrofrontFunction() {
   `.trim();
 }
 
-function createRoute(props: { name: string }) {
+function createRoute(props: TemplateCreateRoute) {
   return `
     createMicrofront({
       url: "/${props.name}*",
       project: "${props.name}",
+      output: "${props.output}"
     });
   `.trim();
 }

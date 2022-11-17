@@ -25,7 +25,7 @@ const liftMultipleApplications = () => {
 };
 
 export const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationResponse => {
-  const { apps: inputApps, autoLift, port } = props;
+  const { apps: inputApps, port } = props;
   const apps = normalizeApps(inputApps);
   
   return {
@@ -40,7 +40,7 @@ export const micro = <T>(props: MicroConfiguration<T>): MicroConfigurationRespon
       for (const app of apps) {
         app.preBuildScript && executePreBuildScript(app);
       }
-      autoLift && liftMultipleApplications();
+      liftMultipleApplications();
     },
   };
 };
