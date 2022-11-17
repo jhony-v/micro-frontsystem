@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./logo.png" width="160" />
+</p>
+
 # micro-frontsystem
 
 Create micro-frontends with easy configurations across your monorepo that you've already set up, otherwise, you can created easy.
