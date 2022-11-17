@@ -1,9 +1,9 @@
 {
- "scripts": {
-   "build": "node ./micro.front.js",
-   "start": "node ./server/index.js"
-},
- "devDependencies": {
+  "name": "example",
+  "scripts": {
+    "start": "node ./micro.front.js"
+  },
+  "devDependencies": {
     "micro-frontsystem": "workspace:*"
- }
+  }
 }
