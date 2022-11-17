@@ -18,7 +18,7 @@ const { run } = micro({
       output: "dist",
     },
   },
-  port: 8000
+  port: 8000,
 });
 
 run();
