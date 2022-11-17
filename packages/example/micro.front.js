@@ -4,11 +4,13 @@ const { run } = micro({
   apps: {
     marketing: {
       basePath: "/marketing",
-      preBuildScript: "build",
+      preBuildScript: "app:build",
+      output: "build",
     },
     selling: {
       basePath: "/selling",
-      preBuildScript: "build",
+      preBuildScript: "app:build",
+      output: "dist",
     },
   },
   port: 8000
