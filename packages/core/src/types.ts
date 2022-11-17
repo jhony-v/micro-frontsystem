@@ -1,8 +1,14 @@
+export interface MicroServerProps {
+  port: number;
+  apps: AppConfig[];
+  dirname: string;
+}
 
-
-export interface TemplateCreateRoute {
-  name: string, 
-  output?: string 
+export interface MicroServerCreateFrontProps {
+  dirname: string
+  basePath: string
+  name?: string
+  output?: string
 }
 
 export type AppConfig = {
@@ -19,5 +25,5 @@ export interface MicroConfiguration<T> {
 
 
 export interface MicroConfigurationResponse {
- run(): void   
+ run(): Promise<void>   
 }
