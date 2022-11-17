@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
         "module": "CommonJS",
-        "target": "ES5",
+        "target": "ES6",
         "moduleResolution": "Node",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "types": [ "node" ],
-        "incremental": true
+        "incremental": false
     }
 }

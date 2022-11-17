@@ -2,8 +2,11 @@ import { MicroServerCreateFrontProps, MicroServerProps } from "./types";
 import express, { Router } from "express";
 import { green, yellow } from "colors";
 import path from "path";
+import cors from "cors"
 
 const app = express();
+
+app.use(cors())
 
 function createMicrofront(props: MicroServerCreateFrontProps) {
   const { basePath, name, output, dirname } = props;

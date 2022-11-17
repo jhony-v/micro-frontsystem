@@ -6,4 +6,7 @@ export default defineConfig({
   minify: true,
   format: ["cjs", "esm"],
   splitting: false,
+  dts: {
+    resolve: true
+  }
 });

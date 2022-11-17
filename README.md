@@ -12,6 +12,11 @@ const { micro } = require("micro-frontsystem");
 
 const { run } = micro({
   apps: {
+    homepage: {
+      basePath: "/",
+      preBuildScript: "build",
+      output: "build",
+    },
     marketing: {
       basePath: "/marketing",
       preBuildScript: "build",
@@ -32,6 +37,10 @@ Let's glance at the frontend structure and how it is ready to build our codebase
 
 ```
 ├───apps
+│   ├───homepage
+│   │   ├───build
+│   │   ├───src
+│   │   └───package.json
 │   ├───marketing
 │   │   ├───build
 │   │   ├───src
@@ -47,7 +56,7 @@ Let's glance at the frontend structure and how it is ready to build our codebase
 node ./micro.front.js
 ```
 
-You may be wondering how it works, the *micro.front.js* is a server with base dynamic routes. The microfront architecture in this approach was developed using paths. Thus, you'll be able to use whatever framework. In our example we are using React and Vue independently. The first React's folder is in charge of the marketing team, and the second of the selling team.
+You may be wondering how it works, the *micro.front.js* is a server with base dynamic routes. The microfront architecture in this approach was developed using paths. Thus, you'll be able to use whatever framework. In our example we are using React and Vue independently.First app is clearly where the user will navigate a lot, the seond React's folder is in charge of the marketing team, and the third of the selling team.
 
 It's worth mentioning, this server run pretty nice with static pages because its mechanism is serving html or a file.
 
